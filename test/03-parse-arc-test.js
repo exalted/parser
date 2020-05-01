@@ -3,7 +3,7 @@ var fs = require('fs')
 var parse = require('../')
 
 test('test base mock file', t=> {
-  t.plan(12)
+  t.plan(15)
   var mock = fs.readFileSync('./test/mock/simple.arc').toString()
   var parsed = parse(mock)
   t.ok(parsed, 'parsed mock')
@@ -19,6 +19,9 @@ test('test base mock file', t=> {
   t.ok(parsed.attr[5].length === 7, '7th member is a vector of seven members')
   t.ok(typeof parsed.attr[6] == 'object' && parsed.attr[6] !== null, '8th member is a plain object')
   t.ok(parsed.attr[4].length === 2, '9th member is also a tuple')
+  t.equal(parsed.attr[10][1], 3527720464.109639, '10th member\'s 2nd element loses its precision')
+  t.equal(parsed.attr[11][1], '3527720464.1096391386291', '11th member\'s 2nd element is a float as a string')
+  t.equal(parsed.attr[12][1], "'3527720464.1096391386291'", '12th member\'s 2nd element is a float as a string wrapped in single quotes')
   console.log(JSON.stringify(parsed.attr, null, 2))
 })
 

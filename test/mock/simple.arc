@@ -33,3 +33,6 @@ another-obj
   asdf 1 2 3 four
 
 spacey    tuple # tuple with lots of spaces
+long-float-number 3527720464.1096391386291
+long-float-double-quotes "3527720464.1096391386291"
+long-baz-single-quotes '3527720464.1096391386291'
